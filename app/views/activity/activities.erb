@@ -1,1 +1,16 @@
-views/activity/activities
+<h3>Welcome, <%= current_user.username %></h3><br>
+<br>
+
+<% @activities.each do |activity| %>
+  <li><%= activity.name %></li>
+  <li><%= activity.activity_date %></li>
+  <li><%= activity.activity_time %></li>
+  <li><%= activity.distance %></li>
+  <li><%= activity.pace_avg %></li>
+  <li><%= activity.speed_avg %></li>
+  <li><%= activity.hr_avg %></li>
+<% end %><br>
+
+<a href="/activity/new">Post New Activity</a><br>
+
+<!-- <a href="/logout">Log Out</a> -->
