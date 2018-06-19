@@ -2,6 +2,7 @@
 <br>
 
 <% @activities.each do |activity| %>
+  <li><%= activity.id %></li>
   <li><%= activity.name %></li>
   <li><%= activity.activity_date %></li>
   <li><%= activity.activity_time %></li>
@@ -9,6 +10,7 @@
   <li><%= activity.pace_avg %></li>
   <li><%= activity.speed_avg %></li>
   <li><%= activity.hr_avg %></li>
+  
 <% end %><br>
 
 <a href="/activity/new">Post New Activity</a><br>
