@@ -1,10 +1,11 @@
 class ActivitiesController < ApplicationController
-  get '/activities' do
+  
+  get '/home' do
     if !logged_in?
       redirect '/login'
     else
       @activities = Activity.all
-      erb :'/activity/activities'
+      erb :'/activity/home'
     end
   end
 
@@ -17,7 +18,6 @@ class ActivitiesController < ApplicationController
   end
 
   post '/activity/new' do
-    # binding.pry
     if !logged_in?
       redirect '/login'
     elsif params.empty?
@@ -26,6 +26,8 @@ class ActivitiesController < ApplicationController
       # category = Category.new(activity_type: params[:category])
       params.delete_if { |k, v| v == "" || k == "category" }
       @activity = Activity.create(params)
+      @activity.user_id = current_user.id
+      @activity.save
       redirect "/activity/#{@activity.id}"
     end
   end
@@ -37,6 +39,31 @@ class ActivitiesController < ApplicationController
    else
      redirect '/login'
    end
+  end
+
+  get '/activity/:id/edit' do
+    # binding.pry
+    if !logged_in?
+      redirect '/login'
+    else
+      @activity = Activity.find(params[:id])
+      if @activity.id == current_user.id
+        erb :"/activity/edit"
+      else
+        redirect "/home"
+      end
+    end
+  end
+
+  patch '/activity/:id' do
+    @activity = Activity.find(params[:id])
+    if params.empty?
+      redirect "/activity/#{@activity.id}/edit"
+    else
+      binding.pry
+      @activity.update(name: params[:name], activity_date: params[:activity_date], activity_time: params[:activity_time], distance: params[:distance], pace_avg: params[:pace_avg], speed_avg: params[:speed_avg], hr_avg:params[:hr_avg], user_id: current_user.id)
+      redirect "/activity/#{@activity.id}"
+    end
   end
 
 

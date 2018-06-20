@@ -1,0 +1,31 @@
+<h2>Edit Activity:</h2>
+<br>
+
+<form class="" action="/activity/<%= @activity.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label for="activity_name">Activity Name</label>
+  <input type="text" name="name" value="<%= @activity.name %>">
+  <br><br>
+  <label for="activity_date">Date of Activity</label>
+  <input type="text" name="activity_date" value="<%= @activity.activity_date %>">
+  <br><br>
+  <label for="activity_time">Time of Activity</label>
+  <input type="text" name="activity_time" value="<%= @activity.activity_time %>">
+  <br><br>
+  <label for="distance">Total Distance</label>
+  <input type="text" name="distance" value="<%= @activity.distance %>">
+  <br><br>
+  <label for="pace">Average Pace</label>
+  <input type="text" name="pace_avg" value="<%= @activity.pace_avg %>">
+  <br><br>
+  <label for="speed">Average Speed</label>
+  <input type="text" name="speed_avg" value="<%= @activity.speed_avg %>">
+  <br><br>
+  <label for="heartrate">Average Heartrate</label>
+  <input type="text" name="hr_avg" value="<%= @activity.hr_avg %>">
+  <br><br>
+
+
+  <input type="submit" name="" value="Edit Activity">
+</form>

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/user/signup'
     else
-      redirect '/activities'
+      redirect '/home'
     end
     #
     # # "TEST"
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     end
   end
 
-  
+
 
 
 end
