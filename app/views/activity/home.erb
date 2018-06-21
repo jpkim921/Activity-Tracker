@@ -1,9 +1,11 @@
-<h3>Welcome, <%= current_user.username %></h3><br>
+<h3>Welcome, <%= current_user.username %></h3>
+<a href="/activity/new">Post New Activity</a><br>
 <br>
-
+<br>
 <% @activities.each do |activity| %>
-  <!-- <li><%= activity.id %></li> -->
-  <li><%= activity.name %></li>
+  <!-- <li>/activity/<%= activity.id %></li> -->
+  <li><a href="/activity/<%= activity.id %>"><%= activity.name.upcase %></a></li>
+  <!-- <li><%= activity.name %></li> -->
   <li><%= activity.activity_date %></li>
   <li><%= activity.activity_time %></li>
   <li><%= activity.distance %></li>
@@ -13,6 +15,5 @@
 <hr>
 <% end %><br>
 
-<a href="/activity/new">Post New Activity</a><br>
 
 <!-- <a href="/logout">Log Out</a> -->

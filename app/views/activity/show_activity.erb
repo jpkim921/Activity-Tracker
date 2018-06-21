@@ -2,8 +2,18 @@
   <h2><%= @activity.name %></h2>
   <p><%= @activity.activity_date %></p>
   <br>
-  <li><%= @activity.activity_time %></li>
-  <li><%= @activity.distance %></li>
-  <li><%= @activity.pace_avg %></li>
-  <li><%= @activity.speed_avg %></li>
-  <li><%= @activity.hr_avg %></li>
+  <li><%= @activity.activity_time %> Time</li>
+  <li><%= @activity.distance %> Distance</li>
+  <li><%= @activity.pace_avg %> Average Pace</li>
+  <li><%= @activity.speed_avg %> Average Speed</li>
+  <li><%= @activity.hr_avg %> Average Heart Rate</li>
+  <br>
+  <li><%= @activity.user_id %> - user_id</li>
+  <li><%= @activity.id %> - id</li>
+
+
+<br><br>
+<form action="/activity/<%= @activity.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete Activity">
+</form>

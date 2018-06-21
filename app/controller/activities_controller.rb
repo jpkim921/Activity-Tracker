@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  
+
   get '/home' do
     if !logged_in?
       redirect '/login'
@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
       redirect '/activity/new'
     else
       # category = Category.new(activity_type: params[:category])
-      params.delete_if { |k, v| v == "" || k == "category" }
+      # params.delete_if { |k, v| v == "" || k == "category" }
       @activity = Activity.create(params)
       @activity.user_id = current_user.id
       @activity.save
@@ -47,7 +47,7 @@ class ActivitiesController < ApplicationController
       redirect '/login'
     else
       @activity = Activity.find(params[:id])
-      if @activity.id == current_user.id
+      if @activity.user_id == current_user.id
         erb :"/activity/edit"
       else
         redirect "/home"
@@ -66,5 +66,23 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  delete '/activity/:id/delete' do
+    # @activity = Activity.find(params[:id])
+
+    if !logged_in?
+      redirect '/login'
+    else
+
+      @activity = Activity.find(params[:id])
+      binding.pry
+
+      if @activity.user_id == current_user.id
+        @activity.delete
+        redirect '/home'
+      else
+        redirect "/login"
+      end
+    end
+  end
 
 end
