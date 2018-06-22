@@ -19,6 +19,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "INDEX PAGE"
+    "index"
+    # erb :'/login'
   end
 end

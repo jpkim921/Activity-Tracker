@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
 
   get '/user/signup' do
-
     if !logged_in?
       erb :'/user/signup'
     else
       redirect '/home'
     end
-    #
-    # # "TEST"
-    # erb :'/user/signup'
   end
 
   post '/user/signup' do
@@ -22,7 +18,24 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/user/login' do
+    if !logged_in?
+      erb :'/user/login'
+    else
+      redirect '/home'
+    end
+  end
 
+  post '/user/login' do
+    # binding.pry
+    user = User.find_by(:username => params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/home'
+    else
+      redirect '/user/login'
+    end
+  end
 
 
 end
