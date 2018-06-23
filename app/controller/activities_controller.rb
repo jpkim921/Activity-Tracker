@@ -1,10 +1,12 @@
 class ActivitiesController < ApplicationController
 
   get '/home' do
+    # binding.pry
     if !logged_in?
       redirect '/login'
     else
-      @activities = Activity.all
+      user = User.find_by_id(current_user.id)
+      @activities = user.activities
       erb :'/activity/home'
     end
   end
