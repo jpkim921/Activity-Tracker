@@ -1,5 +1,4 @@
 require 'rack-flash'
-
 class ActivitiesController < ApplicationController
   use Rack::Flash
 
@@ -23,13 +22,13 @@ class ActivitiesController < ApplicationController
   end
 
   post '/activity/new' do
+    # binding.pry
     if !logged_in?
       redirect '/login'
-    elsif params.empty?
+    elsif params[:name] == ""
+      flash[:message] = "Try again. Must enter activity name."
       redirect '/activity/new'
     else
-      # category = Category.new(activity_type: params[:category])
-      # params.delete_if { |k, v| v == "" || k == "category" }
       @activity = Activity.create(params)
       @activity.user_id = current_user.id
       @activity.save
@@ -86,7 +85,7 @@ class ActivitiesController < ApplicationController
       if @activity.user_id == current_user.id
         @activity.delete
         flash[:message] = "Successfully deleted activity."
-        
+
         redirect '/home'
       else
         redirect "/login"
