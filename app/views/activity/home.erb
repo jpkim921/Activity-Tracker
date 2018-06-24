@@ -51,7 +51,15 @@
             <li><%= activity.speed_avg %></li>
             <li><%= activity.hr_avg %></li>
           </td>
-          <td>SECOND COLUMN</td>
+          <td>
+            <form action="/activity/<%= activity.id %>/edit">
+              <input type="submit" value="EDIT">
+            </form><br>
+            <form action="/activity/<%= activity.id %>/delete" method="post">
+              <input id="hidden" type="hidden" name="_method" value="delete">
+              <input type="submit" name="" value="DELETE">
+            </form>
+          </td>
         </tr>
       <% end %>
     </table>

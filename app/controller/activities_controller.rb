@@ -62,7 +62,7 @@ class ActivitiesController < ApplicationController
     if params.empty?
       redirect "/activity/#{@activity.id}/edit"
     else
-      binding.pry
+      # binding.pry
       @activity.update(name: params[:name], activity_date: params[:activity_date], activity_time: params[:activity_time], distance: params[:distance], pace_avg: params[:pace_avg], speed_avg: params[:speed_avg], hr_avg:params[:hr_avg], user_id: current_user.id)
       redirect "/activity/#{@activity.id}"
     end
@@ -76,7 +76,7 @@ class ActivitiesController < ApplicationController
     else
 
       @activity = Activity.find(params[:id])
-      binding.pry
+      # binding.pry
 
       if @activity.user_id == current_user.id
         @activity.delete
