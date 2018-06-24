@@ -1,4 +1,6 @@
+require 'rack-flash'
 class UsersController < ApplicationController
+  use Rack::Flash
 
   get '/user/signup' do
     if !logged_in?
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
     else
       user = User.create(params)
       session[:user_id] = user.id
+      flash[:message] = "Successfully signed up."
       redirect '/home'
     end
   end

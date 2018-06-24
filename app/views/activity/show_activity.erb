@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <!-- <li><%= @activity.id %></li> -->
   <h2><%= @activity.name %></h2>
   <p><%= @activity.activity_date %></p>

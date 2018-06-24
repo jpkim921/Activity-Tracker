@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class ActivitiesController < ApplicationController
+  use Rack::Flash
 
   get '/home' do
     # binding.pry
@@ -30,6 +33,8 @@ class ActivitiesController < ApplicationController
       @activity = Activity.create(params)
       @activity.user_id = current_user.id
       @activity.save
+      flash[:message] = "Successfully created activity."
+
       redirect "/activity/#{@activity.id}"
     end
   end
@@ -80,6 +85,8 @@ class ActivitiesController < ApplicationController
 
       if @activity.user_id == current_user.id
         @activity.delete
+        flash[:message] = "Successfully deleted activity."
+        
         redirect '/home'
       else
         redirect "/login"
