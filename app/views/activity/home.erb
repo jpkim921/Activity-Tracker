@@ -24,9 +24,6 @@
   <body>
 
     <h3>Welcome, <%= current_user.username %></h3>
-    <div align="right">
-      <a href="/logout">Log Out</a>
-    </div>
 
     <br>
     <a href="/activity/new">Post New Activity</a><br>
@@ -63,6 +60,10 @@
         </tr>
       <% end %>
     </table>
-
+    <br>
+    <div align="left">
+      <a href="/logout">Log Out</a>
+    </div>
+    
   </body>
 </html>
