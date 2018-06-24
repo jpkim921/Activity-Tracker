@@ -9,6 +9,11 @@ class UsersController < ApplicationController
   end
 
   post '/user/signup' do
+    # binding.pry
+    if User.all.any?{|x| x.username == params[:username]}
+      redirect '/user/signup'
+    end
+
     if params.values.any?{|param| param == ""}
       redirect '/user/signup'
     else
