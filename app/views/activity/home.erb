@@ -1,19 +1,60 @@
-<h3>Welcome, <%= current_user.username %></h3>
-<a href="/activity/new">Post New Activity</a><br>
-<br>
-<br>
-<% @activities.each do |activity| %>
-  <!-- <li>/activity/<%= activity.id %></li> -->
-  <li><a href="/activity/<%= activity.id %>"><%= activity.name.upcase %></a></li>
-  <!-- <li><%= activity.name %></li> -->
-  <li><%= activity.activity_date %></li>
-  <li><%= activity.activity_time %></li>
-  <li><%= activity.distance %></li>
-  <li><%= activity.pace_avg %></li>
-  <li><%= activity.speed_avg %></li>
-  <li><%= activity.hr_avg %></li>
-<hr>
-<% end %><br>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 75%;
+      }
 
+      td, th {
+          border: 1px solid black;
+          text-align: left;
+          padding: 8px;
+      }
 
-<a href="/logout">Log Out</a>
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+      </style>
+  </head>
+  <body>
+
+    <h3>Welcome, <%= current_user.username %></h3>
+    <div align="right">
+      <a href="/logout">Log Out</a>
+    </div>
+
+    <br>
+    <a href="/activity/new">Post New Activity</a><br>
+    <br>
+    <table>
+
+      <tr>
+        <th>Activity</th>
+        <th>Options</th>
+      </tr>
+
+      <% @activities.each do |activity| %>
+        <tr>
+          <td>
+            <!-- <li>/activity/<%= activity.id %></li> -->
+            <li><a href="/activity/<%= activity.id %>"><%= activity.name.upcase %></a></li>
+            <!-- <li><%= activity.name %></li> -->
+            <li><%= activity.activity_date %></li>
+            <li><%= activity.activity_time %></li>
+            <li><%= activity.distance %></li>
+            <li><%= activity.pace_avg %></li>
+            <li><%= activity.speed_avg %></li>
+            <li><%= activity.hr_avg %></li>
+          </td>
+          <td>SECOND COLUMN</td>
+        </tr>
+      <% end %>
+    </table>
+
+  </body>
+</html>
