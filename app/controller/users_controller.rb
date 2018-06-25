@@ -1,6 +1,8 @@
-require 'rack-flash'
+# require 'rack-flash'
+require 'sinatra/base'
+require 'sinatra/flash'
 class UsersController < ApplicationController
-  use Rack::Flash
+  # use Rack::Flash
 
   get '/user/signup' do
     if !logged_in?

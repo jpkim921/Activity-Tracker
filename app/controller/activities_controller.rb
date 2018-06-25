@@ -1,6 +1,8 @@
-require 'rack-flash'
+# require 'rack-flash'
+require 'sinatra/base'
+require 'sinatra/flash'
 class ActivitiesController < ApplicationController
-  use Rack::Flash
+  # use Rack::Flash
 
   get '/home' do
     # binding.pry
