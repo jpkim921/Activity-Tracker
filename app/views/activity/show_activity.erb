@@ -7,7 +7,7 @@
 <p><%= @activity.activity_date %></p>
 <br>
 
-<table>
+<table width="600px">
   <tr>
     <td align="right">
       Activity Time:<br>
@@ -25,17 +25,17 @@
     </td>
   </tr>
   <tr>
-    <td>
+    <td width="33%">
       <form action="/home">
         <input type="submit" value="HOME">
       </form>
     </td>
-    <td>
+    <td width="33%">
       <form action="/activity/<%= @activity.id %>/edit">
         <input type="submit" value="EDIT">
       </form>
     </td>
-    <td>
+    <td width=33%>
       <form action="/activity/<%= @activity.id %>/delete" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" name="" value="DELETE">
