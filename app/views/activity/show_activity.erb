@@ -2,42 +2,44 @@
   <%= flash[:message] %>
 <% end %>
 
-<!-- <li><%= @activity.id %></li> -->
-  <h2><%= @activity.name %></h2>
-  <p><%= @activity.activity_date %></p>
-  <br>
-  <li><%= @activity.activity_time %> Time</li>
-  <li><%= @activity.distance %> Distance</li>
-  <li><%= @activity.pace_avg %> Average Pace</li>
-  <li><%= @activity.speed_avg %> Average Speed</li>
-  <li><%= @activity.hr_avg %> Average Heart Rate</li>
-  <br>
-  <li><%= @activity.user_id %> - user_id</li>
-  <li><%= @activity.id %> - id</li>
 
-
-<br><br>
+<h2><%= @activity.name %></h2>
+<p><%= @activity.activity_date %></p>
+<br>
 
 <table>
+  <tr>
+    <td align="right">
+      Activity Time:<br>
+      Total Distance:<br>
+      Pace (Avg):<br>
+      Speed (Avg):<br>
+      Heart Rate (Avg):<br>
+    </td>
+    <td align="center">
+      <%= @activity.activity_time %><br>
+      <%= @activity.distance %><br>
+      <%= @activity.pace_avg %><br>
+      <%= @activity.speed_avg %><br>
+      <%= @activity.hr_avg %><br>
+    </td>
+  </tr>
   <tr>
     <td>
       <form action="/home">
         <input type="submit" value="HOME">
       </form>
     </td>
-    <td><form action="/activity/<%= @activity.id %>/edit">
-      <input type="submit" value="EDIT">
-    </form>
+    <td>
+      <form action="/activity/<%= @activity.id %>/edit">
+        <input type="submit" value="EDIT">
+      </form>
     </td>
-    <td><form action="/activity/<%= @activity.id %>/delete" method="post">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input type="submit" name="" value="DELETE">
-    </form>
-  </td>
+    <td>
+      <form action="/activity/<%= @activity.id %>/delete" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" name="" value="DELETE">
+      </form>
+    </td>
   </tr>
 </table>
-
-<!-- <form action="/activity/<%= @activity.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" name="" value="Delete Activity">
-</form> -->
