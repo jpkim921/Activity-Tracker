@@ -20,26 +20,33 @@
       Speed (Avg):<br>
       Heart Rate (Avg):<br>
     </td>
-    <td align="center">
+    <td style='padding-left: 50px'>
       <%= @activity.activity_time %><br>
       <%= @activity.distance %><br>
       <%= @activity.pace_avg %><br>
       <%= @activity.speed_avg %><br>
       <%= @activity.hr_avg %><br>
     </td>
+    <td align="left">
+      Hr:Mins<br>
+      Miles<br>
+      Min/Mile<br>
+      Mile/Hour<br>
+      BPM<br>
+    </td>
   </tr>
   <tr>
-    <td width="33%">
+    <td width="33%"><br>
       <form action="/home">
         <input type="submit" value="HOME">
       </form>
     </td>
-    <td width="33%">
+    <td width="33%"><br>
       <form action="/activity/<%= @activity.id %>/edit">
         <input type="submit" value="EDIT">
       </form>
     </td>
-    <td width=33%>
+    <td width=33%><br>
       <form action="/activity/<%= @activity.id %>/delete" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" name="" value="DELETE">
