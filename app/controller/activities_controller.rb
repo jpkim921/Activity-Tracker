@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
   get '/home' do
     # binding.pry
     if !logged_in?
-      redirect '/login'
+      redirect '/user/login'
     else
       user = User.find_by_id(current_user.id)
       @activities = user.activities
@@ -26,7 +26,7 @@ class ActivitiesController < ApplicationController
   post '/activity/new' do
     # binding.pry
     if !logged_in?
-      redirect '/login'
+      redirect '/user/login'
     elsif params[:name] == ""
       flash[:message] = "Try again. Must enter activity name."
       redirect '/activity/new'
@@ -42,17 +42,19 @@ class ActivitiesController < ApplicationController
 
   get '/activity/:id' do
    @activity = Activity.find(params[:id])
-   if logged_in?
+   if logged_in? && current_user.id == @activity.user_id
+     # binding.pry
      erb :"/activity/show_activity"
    else
-     redirect '/login'
+     flash[:message] = "Sorry, you cannot view another user's activty."
+     redirect '/user/login'
    end
   end
 
   get '/activity/:id/edit' do
     # binding.pry
     if !logged_in?
-      redirect '/login'
+      redirect '/user/login'
     else
       @activity = Activity.find(params[:id])
       if @activity.user_id == current_user.id
@@ -78,7 +80,7 @@ class ActivitiesController < ApplicationController
     # @activity = Activity.find(params[:id])
 
     if !logged_in?
-      redirect '/login'
+      redirect '/user/login'
     else
 
       @activity = Activity.find(params[:id])
@@ -90,7 +92,7 @@ class ActivitiesController < ApplicationController
 
         redirect '/home'
       else
-        redirect "/login"
+        redirect "/user/login"
       end
     end
   end
