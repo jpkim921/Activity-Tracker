@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180617181216) do
+ActiveRecord::Schema.define(version: 20180627005545) do
 
   create_table "activities", force: :cascade do |t|
     t.string  "name"
     t.string  "activity_date"
-    t.integer "activity_time"
+    t.string  "activity_time"
     t.float   "distance"
-    t.float   "pace_avg"
+    t.string  "pace_avg"
     t.float   "speed_avg"
-    t.float   "hr_avg"
+    t.integer "hr_avg"
     t.integer "user_id"
     t.integer "category_id"
   end
