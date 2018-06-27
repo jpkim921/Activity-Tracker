@@ -17,7 +17,7 @@
       }
 
       tr:nth-child(even) {
-          background-color: #dddddd;
+          background-color: #eee;
       }
       </style>
   </head>
@@ -51,10 +51,10 @@
             <!-- <li><%= activity.name %></li> -->
             <li><%= activity.activity_date %></li>
             <li><%= activity.activity_time %></li>
-            <li><%= activity.distance %></li>
-            <li><%= activity.pace_avg %></li>
-            <li><%= activity.speed_avg %></li>
-            <li><%= activity.hr_avg %></li>
+            <li><%= activity.distance %> Miles</li>
+            <li><%= activity.pace_avg %> Min/Mile</li>
+            <li><%= activity.speed_avg %> Miles/Hour</li>
+            <li><%= activity.hr_avg %> BPM</li>
           </td>
           <td>
             <form action="/activity/<%= activity.id %>/edit">
